@@ -1,5 +1,12 @@
-<div class="list-group">
-    <a *ngFor="let color of colors"  href="#" class="list-group-item list-group-item-action">{{color.name}}</a>
-  </div>
+<h4 *ngIf="dataLoaded==true">Renkler</h4>
+<ul class="list-group">
+   <li><a routerLink=""  class="list-group-item list-group-item-action">Tüm Renkler</a></li>
+   <li><a *ngFor="let color of colors"
+    (click)="setCurrentColor(color)" 
+    routerLink="/cars/color/{{color.id}}" 
+     class="list-group-item list-group-item-action">
+     {{color.name}}
+    </a></li>
+  </ul>
 
 

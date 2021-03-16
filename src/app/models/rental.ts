@@ -3,6 +3,7 @@ export interface Rental{
             carName: string,
             customerFirstName: string,
             customerLastName: string,
+            car:string,
             rentDate: string,
             returnDate: string
 }
