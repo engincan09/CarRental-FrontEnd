@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
   }
   isCurrentColor(color:Color){
     if(color.id === this.currentColor){
-      return true
+      return true;
     }else{
       return false;
     }
