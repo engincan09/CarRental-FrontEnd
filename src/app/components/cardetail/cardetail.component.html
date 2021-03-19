@@ -1,53 +1,83 @@
-<div class="text-center" *ngIf="dataLoaded==false">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Araç Yükleniyor...</span>
+<div class="text-center" *ngIf="dataLoaded == false">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Araç Yükleniyor...</span>
+  </div>
+</div>
+
+<div class="card" *ngIf="dataLoaded == true">
+  <div class="card-header text-center">
+    <strong>
+      {{ carDetails.car.description }} - {{ carDetails.car.modelYear }}
+    </strong>
+  </div>
+  <div class="card-body">
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          *ngFor="let car of carDetails.images; let i = index"
+          [ngClass]="getSliderClassName(i)"
+        >
+          <img
+            src="{{ imageBasePath }}/{{ car.imagePath }}"
+            class="d-block w-100"
+            width="800"
+            height="400"
+            alt="..."
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Araç Kodu</th>
+          <th>Marka</th>
+          <th>Model</th>
+          <th>Renk</th>
+          <th>Günlük Ücret</th>
+          <th>Açıklama</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ carDetails.car.id }}</td>
+          <td>{{ carDetails.car.brandName }}</td>
+          <td>{{ carDetails.car.modelYear }}</td>
+          <td>{{ carDetails.car.colorName }}</td>
+          <td>
+            {{
+              carDetails.car.dailyPrice
+                | currency: "TRY":"symbol-narrow":"2.2-2"
+            }}
+          </td>
+          <td>{{ carDetails.car.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-success form-control">Kirala</button>
     </div>
   </div>
-
-<div class="card" *ngIf="dataLoaded==true" >
-    <div class="card-header text-center">
-        <strong>
-            {{carDetails.car.brandName}} - {{carDetails.car.modelYear}}
-        </strong>
-    </div>
-<div class="card-body"> 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div *ngFor="let car of carDetails.images">
-            <img src="{{imageBasePath}}/{{car.imagePath}}" class="d-block w-100" width="800" height="400" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-   <table class="table">
-       <thead>
-           <tr>
-               <th>Araç Kodu</th>
-               <th>Marka</th>
-               <th>Model</th>
-               <th>Renk</th>
-               <th>Günlük Ücret</th>
-               <th>Açıklama</th>
-           </tr>
-       </thead>
-       <tbody>
-           <tr>
-               <td>{{carDetails.car.id}}</td>
-               <td>{{carDetails.car.brandName}}</td>
-               <td>{{carDetails.car.modelYear}}</td>
-               <td>{{carDetails.car.colorName}}</td>
-               <td>{{carDetails.car.dailyPrice}}</td>
-               <td>{{carDetails.car.description}}</td>
-           </tr>
-       </tbody>
-   </table>
 </div>
-</div>
-
