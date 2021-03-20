@@ -24,6 +24,8 @@ import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
+import { RentListFilterPipe } from './pipes/rent-list-filter.pipe';
 
 
 
@@ -44,6 +46,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ColorFilterPipe,
     SearchComponent,
     PaymentComponent,
+    RentalListComponent,
+    RentListFilterPipe,
 
 
 

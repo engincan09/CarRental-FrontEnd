@@ -1,0 +1,28 @@
+
+    <label for="exampleDataList" class="form-label">Ara</label>
+    <input
+      class="form-control"
+      placeholder="Aranacak ifadeyi giriniz.."
+      [(ngModel)]="filterText"
+    />
+    <div *ngIf="filterText.length > 1" class="alert alert-info">
+      {{ filterText }} aradınız
+    </div>
+    <table *ngIf="dataLoaded == true" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Müşteri Adı ve Soyadı</th>
+          <th scope="col">Araç</th>
+          <th scope="col">Kira Tarihi</th>
+          <th scope="col">Dönüş Tarihi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rental of rentalList | rentListFilter: filterText">
+          <td>{{ rental.customerFirstName }} {{ rental.customerLastName }}</td>
+          <td>{{ rental.carName }}</td>
+          <td>{{ rental.rentDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ rental.returnDate | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
