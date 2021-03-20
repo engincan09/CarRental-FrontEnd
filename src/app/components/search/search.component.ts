@@ -46,5 +46,13 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  isCurrentAllBrand(){
+    if(!this.currentBrand){
+      return true
+    }else{
+      return false
+    }
+  }
+
 
 }

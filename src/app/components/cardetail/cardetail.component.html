@@ -9,6 +9,7 @@
     <strong>
       {{ carDetails.car.description }} - {{ carDetails.car.modelYear }}
     </strong>
+   
   </div>
   <div class="card-body">
     <div
@@ -77,7 +78,10 @@
       </tbody>
     </table>
     <div>
-      <button type="button" class="btn btn-success form-control">Kirala</button>
+    <app-rental [car]="carDetails.car" *ngIf="carDetails.car.status == true"></app-rental>
+    </div>
+    <div class="alert alert-danger" *ngIf="carDetails.car.status == false" role="alert">
+      Aracımız şu anda kiralanamaz durumda.
     </div>
   </div>
 </div>

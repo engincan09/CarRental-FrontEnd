@@ -16,7 +16,7 @@ export class CarComponent implements OnInit {
   constructor(private carService:CarService,private activatedRouter:ActivatedRoute,private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.activatedRouter.queryParams.subscribe(params=> {
+    this.activatedRouter.params.subscribe(params=> {
       if(params["brandId"] && params["colorId"]){
         this.getCarBySearch(params["brandId"],params["colorId"]);
       }
@@ -38,10 +38,13 @@ export class CarComponent implements OnInit {
     });
   }
   getCarBySearch(brandId:number,colorId:number){
-    this.carService.getByBrandAndColor(brandId,colorId).subscribe(response=> {
+    this.carService.getByBrandAndColor(colorId,brandId).subscribe(response=> {
       this.cars = response.data
+      this.dataLoaded = true;
       if(this.cars.length == 0){
-          this.toastr.info("Böyle bir araç bulunamadı!");
+          this.toastr.error("Böyle bir araç bulunamadı.","Uyarı!");
+      }else{
+        this.toastr.success("Araçlar Listelendi.","Başarılı!");
       }
     })
   }
@@ -49,6 +52,11 @@ export class CarComponent implements OnInit {
     this.carService.getCarsByBrand(brandId).subscribe(response=> {
       this.cars=response.data
       this.dataLoaded = true
+      if(this.cars.length == 0){
+        this.toastr.error("Böyle bir araç bulunamadı.","Uyarı!");
+    }else{
+      this.toastr.success("Araçlar Listelendi.","Başarılı!");
+    }
     })
   }
 
@@ -56,6 +64,11 @@ export class CarComponent implements OnInit {
       this.carService.getCarsByColor(colorId).subscribe(response=>{
       this.cars = response.data
       this.dataLoaded = true;
+      if(this.cars.length == 0){
+        this.toastr.error("Böyle bir araç bulunamadı.","Uyarı!");
+    }else{
+      this.toastr.success("Araçlar Listelendi.","Başarılı!");
+    }
     })
   }
 }

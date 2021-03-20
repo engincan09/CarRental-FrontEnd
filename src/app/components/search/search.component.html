@@ -1,7 +1,7 @@
   
 <div class="row mb-2">
     <div class="col col-4">
-        <select class="form-select form-select-sm mb-3" [(ngModel)]="currentBrand"  aria-label="Default select example">
+        <select class="form-select form-select-sm mb-3" [(ngModel)]="currentBrand"  aria-label="Default select example"> 
             <option [selected]="isCurrentBrand(brand.id)" *ngFor="let brand of brands " [value]="brand.id">{{brand.name}}</option>
         </select>
     </div>
