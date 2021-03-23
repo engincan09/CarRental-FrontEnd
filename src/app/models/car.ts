@@ -5,4 +5,5 @@ export interface Car{
         brandName: string;
         dailyPrice: number;
         modelYear: number;
+        status:boolean
 }

@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <form [formGroup]="colorUpdateForm">
+        <div class="mb-3">
+          <label for="colorName" class="form-label">Renk Adı</label>
+          <input type="text" [value]="color.name"  formControlName="name" class="form-control" id="colorName" aria-describedby="emailHelp">
+        </div>  
+        <div class="mb-3">
+          <button type="submit" (click)="updateColor()" class="btn btn-success btn-sm">Güncelle</button>
+        </div>                  
+      </form>       
+</div>

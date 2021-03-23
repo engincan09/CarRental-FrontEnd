@@ -1,0 +1,32 @@
+     <!-- Button trigger modal -->
+<button type="button" class="btn btn-success btn-sm mt-3 " data-bs-toggle="modal" data-bs-target="#exampleModal1">
+    Araçlara Fotoğraf Ekle
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fotoğraf Ekle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">    
+         <form [formGroup]="imageAddForm">
+            <div class="input-group">
+                <input type="file"   formControlName="imagePath" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+            <div class="mb-3">
+                <label for="example-date-input" class="col-4 col-form-label">Marka</label>
+                <select class="form-select" formControlName="carId"  aria-label="Default select example">
+                    <option *ngFor="let car of cars" [ngValue]="car.id">{{car.brandName}} | {{car.colorName}} | {{car.description}}</option>            
+                </select>   
+            </div>  
+         </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kapat</button>
+          <button type="submit" (click)="add()" class="btn btn-success btn-sm">Oluştur</button>
+        </div>
+      </div>
+    </div>
+  </div>

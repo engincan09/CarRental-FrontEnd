@@ -1,0 +1,67 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="exampleDataList" class="form-label">Ara</label>
+        <input
+          class="form-control"
+          placeholder="Aranacak ifadeyi giriniz.."
+          [(ngModel)]="filterText" />
+       </div>
+       
+        <div *ngIf="filterText.length > 1" class="alert alert-info aler-sm">
+          {{ filterText }} aradınız
+        </div>
+        <app-search></app-search>  
+        <app-brand></app-brand>
+        <app-color></app-color>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Araç No</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Model</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars | carFilter: filterText">
+            <td>{{ car.id }}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.dailyPrice }}₺</td>
+            <td>{{ car.description }}</td>
+            <td>{{ car.colorName }}</td>
+            <td>{{ car.description }}</td>
+            <td>
+              <a
+                class="btn btn-primary btn-sm"
+                routerLink="/cardetail/{{ car.id }}"
+                >Detaylar</a>       
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-auto">
+          <app-car-add></app-car-add>
+        </div>
+        <div class="col-auto">
+          <app-car-image-add></app-car-image-add>
+        </div>
+      </div>
+     
+      
+      <div>
+  
+  
+    </div>
+
+  </div>
+  
+    

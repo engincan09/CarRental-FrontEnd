@@ -1,0 +1,7 @@
+<label for="exampleDataList" class="form-label">Markalar</label>
+<div class="list-group">
+    <a routerLink="/cars" class="list-group-item list-group-item-action" aria-current="true">
+     Tüm Markalar
+    </a>
+    <a *ngFor="let brand of brands" routerLink="/cars/brand/{{brand.id}}" class="list-group-item list-group-item-action" >{{brand.name}}</a>
+  </div>

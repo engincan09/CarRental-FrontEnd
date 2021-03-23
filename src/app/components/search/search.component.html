@@ -1,17 +1,17 @@
   
-<div class="row mb-2">
+<div class="row mb-1">
     <div class="col col-4">
         <select class="form-select form-select-sm mb-3" [(ngModel)]="currentBrand"  aria-label="Default select example"> 
             <option [selected]="isCurrentBrand(brand.id)" *ngFor="let brand of brands " [value]="brand.id">{{brand.name}}</option>
         </select>
     </div>
-    <div class="col col4">
+    <div class="col col-5">
         <select class="form-select form-select-sm mb-3" [(ngModel)]="currentColor"   aria-label="Default select example">
             <option [selected]="isCurrentColor(color.id)" *ngFor="let color of colors " [value]="color.id">{{color.name}}</option>
         </select>
     </div>
     <div class="col col-2">
-        <a routerLink="/cars/searchfilter/{{currentBrand}}/{{currentColor}}" class="btn btn-warning">Filtrele</a>  
+        <a routerLink="/cars/searchfilter/{{currentBrand}}/{{currentColor}}" class="btn btn-warning btn-sm">Filtrele</a>  
     </div>
 </div>
 

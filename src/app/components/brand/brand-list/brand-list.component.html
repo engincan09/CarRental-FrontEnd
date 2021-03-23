@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Marka Adı</th>  
+            <th>İşlemler</th>        
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let brand of brands">
+            <td>{{brand.name}}</td>
+            <td><a class="btn btn-primary btn-sm" routerLink="/branddetail/{{ brand.id }}">Güncelle</a></td>
+         </tr>
+        </tbody>
+      </table>
+      <app-brand-add> </app-brand-add>
+</div>

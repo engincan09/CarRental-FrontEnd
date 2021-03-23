@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <form [formGroup]="brandUpdateForm">
+        <div class="mb-3">
+          <label for="brandrName" class="form-label">Marka Adı</label>
+          <input type="text" [value]="brand.name"  formControlName="name" class="form-control" id="brandName" aria-describedby="emailHelp">
+        </div>  
+        <div class="mb-3">
+          <button type="submit" (click)="updateBrand()" class="btn btn-success btn-sm">Güncelle</button>
+        </div>                  
+      </form>       
+</div>
+

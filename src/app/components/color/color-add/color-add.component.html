@@ -1,0 +1,27 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Renk Oluştur
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Renk Oluştur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="colorAddForm">
+            <div class="mb-3">
+              <label for="brandName" class="form-label">Renk Adı</label>
+              <input type="text" formControlName="name" class="form-control" id="brandName" aria-describedby="emailHelp">
+            </div>                    
+          </form>       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kapat</button>
+          <button type="submit" (click)="add()" class="btn btn-success btn-sm">Oluştur</button>
+        </div>
+      </div>
+    </div>
+  </div>

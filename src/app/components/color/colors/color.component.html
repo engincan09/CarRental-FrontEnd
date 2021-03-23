@@ -1,0 +1,7 @@
+<label for="exampleDataList" class="form-label">Renkler</label>
+<div class="list-group">
+    <a routerLink="/cars" class="list-group-item list-group-item-action" aria-current="true">
+     Tüm Renkler
+    </a>
+    <a *ngFor="let color of colors" routerLink="/cars/brand/{{color.id}}" class="list-group-item list-group-item-action" >{{color.name}}</a>
+  </div>
