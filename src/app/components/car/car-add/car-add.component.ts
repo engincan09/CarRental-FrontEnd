@@ -20,6 +20,7 @@ export class CarAddComponent implements OnInit {
   
   carAddForm:FormGroup;
   imageAddForm:FormGroup;
+  carId:number;
   brandId:number;
   colorId:number;
   colors:Color[];
@@ -64,6 +65,7 @@ export class CarAddComponent implements OnInit {
       let carModel = Object.assign({},this.carAddForm.value);
       this.carService.addCar(carModel).subscribe(response=> {
         this.toastr.success(response.messages,"Başarılı")
+        this.carId = response.data.id;
       },responseError=>{
         if(responseError.error.Errors.length>0){
           for (let i = 0; i <responseError.error.Errors.length; i++) {

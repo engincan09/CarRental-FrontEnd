@@ -1,47 +1,48 @@
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-success btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Araç Ekle
-  </button>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Araç Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="carAddForm">
+  Araba Ekle
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Araba Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carAddForm">
+          <div class="mb-3">
+              <label for="example-date-input" class="col-4 col-form-label">Marka</label>
+              <select class="form-select" formControlName="brandId"  aria-label="Default select example">
+                  <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name}}</option>            
+              </select>   
+          </div>  
+          <div class="mb-3">
+              <label for="example-date-input" class="col-4 col-form-label">Renk</label>
+              <select class="form-select"  formControlName="colorId"  aria-label="Default select example">
+                  <option *ngFor="let color of colors" [ngValue]="color.id">{{color.name}}</option>            
+              </select>    
+          </div>  
+          <div class="mb-3">
+              <label for="dailyPrice" class="form-label">Günlük Ücret</label>
+              <input type="number" formControlName="dailyPrice" class="form-control" id="dailyPrice" aria-describedby="emailHelp">
+            </div>     
             <div class="mb-3">
-                <label for="example-date-input" class="col-4 col-form-label">Marka</label>
-                <select class="form-select" formControlName="brandId"  aria-label="Default select example">
-                    <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name}}</option>            
-                </select>   
-            </div>  
+              <label for="modelYear" class="form-label">Model</label>
+              <input type="number" formControlName="modelYear" class="form-control" id="modelYear" aria-describedby="emailHelp">
+            </div>    
             <div class="mb-3">
-                <label for="example-date-input" class="col-4 col-form-label">Renk</label>
-                <select class="form-select"  formControlName="colorId"  aria-label="Default select example">
-                    <option *ngFor="let color of colors" [ngValue]="color.id">{{color.name}}</option>            
-                </select>    
-            </div>  
-            <div class="mb-3">
-                <label for="dailyPrice" class="form-label">Günlük Ücret</label>
-                <input type="number" formControlName="dailyPrice" class="form-control" id="dailyPrice" aria-describedby="emailHelp">
-              </div>     
-              <div class="mb-3">
-                <label for="modelYear" class="form-label">Model</label>
-                <input type="number" formControlName="modelYear" class="form-control" id="modelYear" aria-describedby="emailHelp">
-              </div>    
-              <div class="mb-3">
-                <label for="description" class="form-label">Açıklama</label>
-                <input type="text" formControlName="description" class="form-control" id="description" aria-describedby="emailHelp">
-              </div>                  
-          </form> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kapat</button>
-          <button type="submit" (click)="add()" class="btn btn-success btn-sm">Oluştur</button>
-        </div>
+              <label for="description" class="form-label">Açıklama</label>
+              <input type="text" formControlName="description" class="form-control" id="description" aria-describedby="emailHelp">
+            </div>                  
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kapat</button>
+        <button type="submit" (click)="add()" class="btn btn-success btn-sm">Oluştur</button>
       </div>
     </div>
   </div>
+</div>

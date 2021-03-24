@@ -7,12 +7,13 @@ import { ResponseModel } from '../models/responseModel';
 @Injectable({
   providedIn: 'root'
 })
-export class ImageAddService {
+export class ImageService {
 
-  apiUrl="https://localhost:44379/api/";
-  constructor(private htppClient:HttpClient) { }
+  apiUrl = "https://localhost:44379/api/";
+  constructor(private httpClient:HttpClient) { }
 
   add(image:CarImage):Observable<ResponseModel>{
-    return this.htppClient.post<ResponseModel>(this.apiUrl+"CarImages/add",image)
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"CarImages/add",image)
+
   }
 }

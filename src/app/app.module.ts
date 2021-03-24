@@ -15,7 +15,7 @@ import { CustomerComponent } from './components/customer/customers/customer.comp
 import { RentalComponent } from './components/rental/rental.component';
 import { CardetailComponent } from './components/car/cardetail/cardetail.component';
 import { SearchComponent } from './components/search/search.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -76,6 +76,7 @@ import { CarImageAddComponent } from './components/car/car-image-add/car-image-a
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FileUploadModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     }),
