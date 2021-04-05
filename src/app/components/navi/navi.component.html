@@ -1,35 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="">Can Rent A Car</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Hakkımızda</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/cars">Araçlar</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Hizmetler
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/cars">Araç Kiralama</a></li>          
-          </ul>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/brandList">Markalar</a>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/colorList">Renkler</a>
-        </li>      
-      </ul>
-    </div>
-  </div>
-</nav>
+<p class="alert alert-dark text-center m-0" *ngIf="users?.claimName == 'admin'">Admin Paneli</p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-conte">
+      <a class="navbar-brand px-3" href="#">Can Rent A Car</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="">Anasayfa</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/cars"  tabindex="-1" aria-disabled="true">Araçlarımız</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/colors" *ngIf="isLoggedIn && users?.claimName == 'admin'" tabindex="-1" aria-disabled="true">Renk İşlemleri</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/brands" *ngIf="isLoggedIn && users?.claimName == 'admin'" tabindex="-1" aria-disabled="true">Marka İşlemleri</a>
+          </li>
+          <li class="nav-item dropdown"> 
+            <div class="collapse navbar-collapse dropstart" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ng-container *ngIf="isLoggedIn">
+                      {{users?.firstName}} {{users?.lastName}} 
+                    </ng-container>
+                    <ng-container *ngIf="!isLoggedIn">
+                     Giriş / Kayıt
+                    </ng-container>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <ng-container *ngIf="!isLoggedIn">
+                      <li><a class="dropdown-item" routerLink="/login">Gİriş</a></li>
+                      <li><a class="dropdown-item" routerLink="/register">Üye Ol</a></li>
+                    </ng-container>
+                    <ng-container *ngIf="isLoggedIn">
+                      <li><a class="dropdown-item" routerLink="/userinfo">Profilim</a></li>
+                      <li><a class="dropdown-item" (click)="logout()">Çıkış Yap</a></li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>    
+      </div>
+  </nav>
+
+

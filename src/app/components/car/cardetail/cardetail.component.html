@@ -56,7 +56,8 @@
           <th>Araç Kodu</th>
           <th>Marka</th>
           <th>Model</th>
-          <th>Renk</th>
+          <th>Renk</th>    
+          <th>Findeks</th>
           <th>Günlük Ücret</th>
           <th>Açıklama</th>
         </tr>
@@ -67,6 +68,7 @@
           <td>{{ carDetails.car.brandName }}</td>
           <td>{{ carDetails.car.modelYear }}</td>
           <td>{{ carDetails.car.colorName }}</td>
+          <td>{{carDetails.car.findeksPoint}}</td>    
           <td>
             {{
               carDetails.car.dailyPrice
@@ -82,6 +84,9 @@
     </div>
     <div class="alert alert-danger" *ngIf="carDetails.car.status == false" role="alert">
       Aracımız şu anda kiralanamaz durumda.
+    </div>
+    <div>
+      <button class="btn btn-primary form-control btn-sm " *ngIf="userClaim == 'admin'" routerLink="/carupdate/{{ carDetails.car.id}}">Güncelle</button>
     </div>
   </div>
 </div>

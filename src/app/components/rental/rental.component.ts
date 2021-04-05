@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
+import { CustomerDto } from 'src/app/models/customerDto';
 import { Rental } from 'src/app/models/rental';
+import { CheckFindeksService } from 'src/app/services/check-findeks.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { RentalService } from 'src/app/services/rental.service';
 
@@ -13,7 +15,7 @@ import { RentalService } from 'src/app/services/rental.service';
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
-  customers:Customer[];
+  customers:CustomerDto[];
   customerId:number;
   rentDate:Date;
   returnDate:Date;
@@ -22,7 +24,8 @@ export class RentalComponent implements OnInit {
     private customerService:CustomerService,
     private router:Router,
     private toastr:ToastrService,
-    private activatedRouter:ActivatedRoute) { }
+    private activatedRouter:ActivatedRoute,
+    private findeksService:CheckFindeksService) { }
 
   ngOnInit(): void {
     this.getCustomer();
@@ -47,8 +50,15 @@ export class RentalComponent implements OnInit {
       carId:this.car.id,
       customerId : parseInt(this.customerId.toString()) 
     }
-    this.router.navigate(['/payment/',JSON.stringify(rental)])
-    this.toastr.info("Ödeme sayfasına yönlendiriliyorsunuz.","Ödeme");
+    var result = this.findeksService.checkFindeksPoint(rental.carId,rental.customerId);
+    if(result === true){
+      this.router.navigate(['/payment/',JSON.stringify(rental)])
+      this.toastr.info("Ödeme sayfasına yönlendiriliyorsunuz.","Ödeme");
+    }else{
+      this.toastr.error("Aracı Kiralayabilmek İçin Yeteri Kadar Findeks Puanınız Bulunmamakta.","Hata");
+
+    }
+   
 
   }
 

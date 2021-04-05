@@ -5,5 +5,6 @@ export interface Car{
         brandName: string;
         dailyPrice: number;
         modelYear: number;
+        findeksPoint:number;
         status:boolean
 }

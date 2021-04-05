@@ -11,7 +11,6 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from './components/car/cars/car.component';
 import { BrandComponent } from './components/brand/brands/brand.component';
 import { ColorComponent } from './components/color/colors/color.component';
-import { CustomerComponent } from './components/customer/customers/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CardetailComponent } from './components/car/cardetail/cardetail.component';
 import { SearchComponent } from './components/search/search.component';
@@ -34,6 +33,17 @@ import { ColorListComponent } from './components/color/color-list/color-list.com
 import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
 import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
 import { CarImageAddComponent } from './components/car/car-image-add/car-image-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MdbModule } from 'mdb-angular-ui-kit';
+import { UserInfoComponent } from './components/user/user-info/user-info.component';
+import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
+import { UsertabmenuComponent } from './components/user/usertabmenu/usertabmenu.component';
+import { UserrentalsComponent } from './components/user/userrentals/userrentals.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { UserCompanyComponent } from './components/user/user-company/user-company.component';
+import { UserCompanyUpdateComponent } from './components/user/user-company-update/user-company-update.component';
 
 
 
@@ -47,7 +57,6 @@ import { CarImageAddComponent } from './components/car/car-image-add/car-image-a
     CarComponent,
     BrandComponent,
     ColorComponent,
-    CustomerComponent,
     RentalComponent,
     CardetailComponent,
     CarFilterPipe,
@@ -66,6 +75,16 @@ import { CarImageAddComponent } from './components/car/car-image-add/car-image-a
     ColorUpdateComponent,
     BrandUpdateComponent,
     CarImageAddComponent,
+    LoginComponent,
+    RegisterComponent,
+    FooterComponent,
+    UserInfoComponent,
+    UserupdateComponent,
+    UsertabmenuComponent,
+    UserrentalsComponent,
+    CarUpdateComponent,
+    UserCompanyComponent,
+    UserCompanyUpdateComponent
 
 
 
@@ -80,7 +99,8 @@ import { CarImageAddComponent } from './components/car/car-image-add/car-image-a
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdbModule
     
   ],
   providers: [],

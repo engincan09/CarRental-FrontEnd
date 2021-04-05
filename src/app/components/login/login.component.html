@@ -1,0 +1,17 @@
+<body class="text-center">  
+    <main class="form-signin">
+      <form [formGroup]="loginForm">
+        <h1 class="h3 mb-3 fw-normal">Giriş</h1>    
+        <div class="form-floating">
+          <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="Mail Adresinizi Giriniz">
+          <label for="floatingInput">Mail</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Şifrenizi Giriniz">
+          <label for="floatingPassword">Şifre</label>
+        </div>         
+        <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit">Giriş</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020–2021</p>
+      </form>
+    </main>
+</body>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 mt-4">
+          <app-usertabmenu></app-usertabmenu>
+        </div>
+        <div class="col-md-9">
+          <h3>Şirket Bilgilerimi</h3>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Şirket Adı</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <td>{{customer?.companyName}}</td>            
+                </tbody>
+            </table>
+            <app-user-company-update></app-user-company-update>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { UserDto } from 'src/app/models/userDto';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-car',
@@ -13,9 +17,18 @@ export class CarComponent implements OnInit {
   cars : Car[] = [];
   dataLoaded = false;
   filterText="";
-  constructor(private carService:CarService,private activatedRouter:ActivatedRoute,private toastr:ToastrService) { }
+  isLoggedIn = false;
+  userClaim:string
+  constructor(
+    private carService:CarService,
+    private activatedRouter:ActivatedRoute,
+    private toastr:ToastrService,
+    private authService:AuthService,
+    private userService:UserService,
+    private sessionService:SessionStorageService) { }
 
   ngOnInit(): void {
+    this.controlUserClaim();
     this.activatedRouter.params.subscribe(params=> {
       if(params["brandId"] && params["colorId"]){
         this.getCarBySearch(params["brandId"],params["colorId"]);
@@ -29,7 +42,10 @@ export class CarComponent implements OnInit {
         this.getAllCars();
       }
     })
+    this.isLoggedIn = this.authService.isAuthenticaded();
+    
   }
+  
 
   getAllCars(){
     this.carService.getAllCars().subscribe(response=>{
@@ -70,5 +86,10 @@ export class CarComponent implements OnInit {
       this.toastr.success("Araçlar Listelendi.","Başarılı!");
     }
     })
+  }
+
+  controlUserClaim(){
+    let email = this.sessionService.getUser('email');
+    this.userService.getUserAndClaim(email).subscribe(response=> {this.userClaim = response.data.claimName})
   }
 }

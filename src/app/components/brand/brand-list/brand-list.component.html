@@ -8,7 +8,7 @@
         </thead>
         <tbody>
          <tr *ngFor="let brand of brands">
-            <td>{{brand.name}}</td>
+            <td>{{brand?.name}}</td>
             <td><a class="btn btn-primary btn-sm" routerLink="/branddetail/{{ brand.id }}">Güncelle</a></td>
          </tr>
         </tbody>

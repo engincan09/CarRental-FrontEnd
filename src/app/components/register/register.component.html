@@ -1,0 +1,30 @@
+<body class="text-center">  
+    <main class="form-signin">
+      <form [formGroup]="registerForm">
+        <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>   
+        <div class="form-floating">
+          <input type="text" formControlName="firstName" class="form-control"  placeholder="Adınızı Giriniz">
+          <label for="floatingInput">Ad</label>
+        </div> 
+        <div class="form-floating">
+          <input type="text" formControlName="lastName" class="form-control"  placeholder="Soyadınızı Giriniz">
+          <label for="floatingInput">Soyad</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" formControlName="email" class="form-control"  placeholder="Mail Adresinizi Giriniz">
+          <label for="floatingInput">Mail</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" formControlName="password" [(ngModel)]="password" class="form-control" placeholder="Şifre">
+          <label for="floatingPassword">Şifre</label>
+        </div>       
+        <div class="form-floating">
+          <input type="password" formControlName="verifyPassword" [(ngModel)]="verifyPassword" class="form-control"  placeholder="Şifrenizi Tekrar Giriniz">
+          <label for="floatingPassword">Şifreyi Doğrula</label>
+        </div>         
+        <button class="w-100 btn btn-lg btn-primary" (click)="register()" type="submit">Kayıt Ol</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020–2021</p>
+      </form>
+    </main>
+</body>
+

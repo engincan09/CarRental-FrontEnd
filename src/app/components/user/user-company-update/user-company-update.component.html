@@ -1,0 +1,46 @@
+<!-- Button trigger modal -->
+<div class="d-grid gap-2">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm form-control"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Firma Bilgilerimi Güncelle
+    </button>
+  </div>
+  
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h3>Şirket Bilgilerimi Güncelle</h3>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="companyUpdateForm">
+                <div class="mb-3">
+                  <label for="brandName" class="form-label">Firma Adı</label>
+                  <input type="text"   formControlName="companyName" class="form-control" id="brandName" aria-describedby="emailHelp">
+                </div>  
+                <div class="mb-3">
+                    <button data-bs-dismiss="modal" (click)="companyUpdate()" type="button" class="btn btn-primary">
+                        Güncelle
+                      </button>
+                </div>                  
+              </form>                             
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Kapat
+          </button>    
+        </div>
+      </div>
+    </div>
+  </div>

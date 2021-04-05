@@ -27,6 +27,7 @@
             <th scope="col">Model</th>
             <th scope="col">Renk</th>
             <th scope="col">Açıklama</th>
+            <th scope="col">Findeks</th>
             <th scope="col">İşlemler</th>
           </tr>
         </thead>
@@ -38,6 +39,7 @@
             <td>{{ car.description }}</td>
             <td>{{ car.colorName }}</td>
             <td>{{ car.description }}</td>
+            <td>{{car.findeksPoint}}</td>
             <td>
               <a
                 class="btn btn-primary btn-sm"
@@ -47,7 +49,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="row">
+      <div class="row" *ngIf="userClaim === 'admin'">
         <div class="col-auto">
           <app-car-add></app-car-add>
         </div>
